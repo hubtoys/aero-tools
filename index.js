@@ -1,6 +1,4 @@
-const R = 6371e3; // metres
-
-console.log("la aussi");
+const R = 6371e3;
 
 deg2Rad = (dms) => {
   if (!isNaN(parseFloat(dms)) && isFinite(dms)) return Number(dms);
@@ -9,7 +7,7 @@ deg2Rad = (dms) => {
     .replace(/^-/, "")
     .replace(/[NSEW]$/i, "")
     .split(/[^0-9.,]+/);
-  if (dmsParts[dmsParts.length - 1] == "") dmsParts.splice(dmsParts.length - 1); // from trailing symbol
+  if (dmsParts[dmsParts.length - 1] == "") dmsParts.splice(dmsParts.length - 1);
 
   if (dmsParts == "") return NaN;
 
@@ -78,20 +76,20 @@ deg2Rad = (degrees) => {
 };
 
 deg2Dms = (deg) => {
-  d = Math.floor(deg); // get component deg
-  m = Math.floor((deg * 3600) / 60) % 60; // get component min
-  s = ((deg * 3600) % 60).toFixed(0); // get component sec & round/right-pad
+  d = Math.floor(deg);
+  m = Math.floor((deg * 3600) / 60) % 60;
+  s = ((deg * 3600) % 60).toFixed(0);
   if (s == 60) {
     s = (0).toFixed(0);
     m++;
-  } // check for rounding up
+  }
   if (m == 60) {
     m = 0;
     d++;
-  } // check for rounding up
-  d = ("000" + d).slice(-3); // left-pad with leading zeros
-  m = ("00" + m).slice(-2); // left-pad with leading zeros
-  if (s < 10) s = "0" + s; // left-pad with leading zeros (note may include decimals)
+  }
+  d = ("000" + d).slice(-3);
+  m = ("00" + m).slice(-2);
+  if (s < 10) s = "0" + s;
   dms = d + "°" + m + "′" + s + "″";
   return dms;
 };
@@ -133,7 +131,7 @@ bearing = (lat1, lon1, lat2, lon2) => {
     Math.cos(lat1) * Math.sin(lat2) -
     Math.sin(lat1) * Math.cos(lat2) * Math.cos(lon2 - lon1);
   const θ = Math.atan2(y, x);
-  const brng = ((θ * 180) / Math.PI + 360) % 360; // in degrees
+  const brng = ((θ * 180) / Math.PI + 360) % 360;
   return {
     startPoint: {
       latitude: latitudeAllUnitsDms(lat1),
@@ -151,7 +149,6 @@ finalBearing = (lat1, lon1, brng) => {};
 
 destinationPoint = (lat1, lon1, brng, distance) => {
   let bearing = brng;
-  //dms2Deg(brng);
   let bearingDegrees = 0;
   if (typeof brng === "string" && brng.indexOf("°") > 0) {
     bearing = deg2Rad(dms2Deg(brng));
@@ -179,7 +176,7 @@ destinationPoint = (lat1, lon1, brng, distance) => {
 };
 
 distance = (lat1, lon1, lat2, lon2) => {
-  const φ1 = (lat1 * Math.PI) / 180; // φ, λ in radians
+  const φ1 = (lat1 * Math.PI) / 180;
   const φ2 = (lat2 * Math.PI) / 180;
   const Δφ = ((lat2 - lat1) * Math.PI) / 180;
   const Δλ = ((lon2 - lon1) * Math.PI) / 180;
@@ -189,7 +186,7 @@ distance = (lat1, lon1, lat2, lon2) => {
     Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-  const d = R * c; // in metres
+  const d = R * c;
 
   return {
     startPoint: {
