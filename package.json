@@ -1,6 +1,6 @@
 {
   "name": "aero-tools",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Useful tools to perform aeronautical computations",
   "main": "index.js",
   "author": "Vincent Hubert",
