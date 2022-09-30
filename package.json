@@ -4,5 +4,9 @@
   "description": "Useful tools to perform aeronautical computations",
   "main": "index.js",
   "author": "Vincent Hubert",
-  "license": "ISC"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hubtoys/aero-tools.git"
+  }
 }
