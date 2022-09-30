@@ -62,7 +62,21 @@ console.log(
 
 ## Available functions
 
-##### aero-tools#deg2Rad(decimalDegree)
+##### aero-tools#deg2Rad
+
+##### aero-tools#deg2Dms,
+
+##### aero-tools#bearing,
+
+##### aero-tools#meters2Miles,
+
+##### aero-tools#meters2NauticMiles,
+
+##### aero-tools#distance,
+
+##### aero-tools#destinationPoint,
+
+##### aero-tools#rangeMap,
 
 ## License
 
